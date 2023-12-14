@@ -46,6 +46,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
               SizedBox(
                 height: 60,
               ),
+               TextField(
+                controller: signUpController.nameController,
+                decoration: InputDecoration(
+                  label: Text("Name")
+                ),
+              ),
+               SizedBox(
+                height: 10,
+              ),
+               TextField(
+                controller: signUpController.aboutController,
+                decoration: InputDecoration(
+                  label: Text("About")
+                ),
+              ),
+               SizedBox(
+                height: 10,
+              ),
               TextField(
                 controller: signUpController.emailController,
                 decoration: InputDecoration(
@@ -58,7 +76,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                TextField(
                 controller: signUpController.passwordController,
                 decoration: InputDecoration(
-                  label: Text("password")
+                  label: Text("Password")
                 ),
               ),
                SizedBox(
