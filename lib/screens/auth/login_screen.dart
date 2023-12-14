@@ -1,9 +1,9 @@
- 
- import 'package:chatapp/controller/auth/login_controller.dart';
+import 'package:chatapp/controller/auth/login_controller.dart';
+import 'package:chatapp/screens/auth/signup_screen.dart';
+import 'package:chatapp/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:sign_in_button/sign_in_button.dart';
+import 'package:flutter/cupertino.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -29,40 +29,67 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          //  crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-             SizedBox(
-              height: 150,
-            ),
-            Center(
-              child: Image.asset(
-                "assets/logo.png",
-                width: 200,
-                height: 200,
+        child: SingleChildScrollView(
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            //  crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 70,
               ),
-            ),
-            // with custom text
-            SizedBox(
-              height: 60,
-            ),
-            SizedBox(
-              width: MediaQuery.sizeOf(context).width,
-              height: 50,
-              child: SignInButtonBuilder(
-              
-                icon:FontAwesomeIcons.google,
-                text: "Sign in with Google",
-                onPressed: () {
-                  loginController.googleLogin(context);
+              Center(
+                child: Image.asset(
+                  "assets/logo.png",
+                  width: 100,
+                  height: 100,
+                ),
+              ),
+              // with custom text
+              SizedBox(
+                height: 60,
+              ),
+              TextField(
+                controller: loginController.emailController,
+                decoration: InputDecoration(label: Text("Email")),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              TextField(
+                controller: loginController.passwordController,
+                decoration: InputDecoration(label: Text("password")),
+              ),
+              SizedBox(
+                height: 60,
+              ),
+              SizedBox(
+                  width: MediaQuery.sizeOf(context).width,
+                  height: 50,
+                  child: CupertinoButton(
+                      color: Colors.blueGrey,
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: () {
+                       // loginController.loginMethod(context);
+                       Get.to(HomeScreen());
+                      })),
+              SizedBox(
+                height: 30,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.to(()=>SignUpScreen());
                 },
-                elevation: 5,
-                shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                backgroundColor: Colors.blueGrey,
+                child: Text(
+                  "Don't have an account? SignUp",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );

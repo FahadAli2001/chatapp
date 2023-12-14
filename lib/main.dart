@@ -1,21 +1,18 @@
-import 'package:chatapp/firebase_options.dart';
- import 'package:chatapp/screens/splash_Screen.dart';
+  import 'package:chatapp/screens/splash_Screen.dart';
  import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
+ import 'package:get/get.dart';
 void main()async {
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);//help in full screen
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown
-  ]
+ // SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);//help in full screen
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  //   DeviceOrientation.portraitDown
+  // ]
     
-  );//  orientation  setting
-  await Firebase.initializeApp(
+ // );//  orientation  setting
+   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
    
-);
-WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
